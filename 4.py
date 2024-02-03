@@ -8,6 +8,9 @@ def get_upcoming_birthdays(users):
     for user in users:
         birthday = datetime.strptime(user["birthday"], "%Y.%m.%d").date()
 
+        if birthday < today:
+            birthday = birthday.replace(year=today.year + 1)
+
         birthday_this_year = birthday.replace(year=today.year)
 
         days_until_birthday = (birthday_this_year - today).days
@@ -26,8 +29,8 @@ def get_upcoming_birthdays(users):
     return upcoming_birthdays
 
 users = [
-    {"name": "John Doe", "birthday": "2024.02.3"},
-    {"name": "Jane Smith", "birthday": "2024.02.6"}
+    {"name": "John Doe", "birthday": "2024.02.03"},
+    {"name": "Jane Smith", "birthday": "2024.02.06"}
 ]
 
 upcoming_birthdays = get_upcoming_birthdays(users)

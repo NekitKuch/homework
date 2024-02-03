@@ -1,8 +1,6 @@
-# Task 3
 import re
 
 def normalize_phone(phone_number):
-
     cleaned_number = re.sub(r'\D', '', phone_number)
 
     if not cleaned_number.startswith('+'):
@@ -23,4 +21,5 @@ raw_numbers = [
 ]
 
 sanitized_numbers = [normalize_phone(num) for num in raw_numbers]
-print("Нормалізовані номери телефонів:", sanitized_numbers)
+print("Нормалізовані номери телефонів для SMS-розсилки:", sanitized_numbers)
+
