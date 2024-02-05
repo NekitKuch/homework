@@ -4,10 +4,11 @@ def normalize_phone(phone_number):
     # прибираємо мусор в номері
     cleaned_number = re.sub(r"[^0-9+]", "", phone_number)
 
-    # прибираємо дужки
-    cleaned_number = re.sub(r"\D", "", cleaned_number)
+    # якщо є +, але немає 380, нічого не змінюємо
+    if cleaned_number.startswith('+') and not cleaned_number.startswith('+380'):
+        return cleaned_number
 
-    # додає +380, якщо його немає
+    # додаємо +380, якщо його немає
     if not cleaned_number.startswith('+') and not cleaned_number.startswith('380'):
         # якщо нуль на початку
         cleaned_number = '+380' + cleaned_number.lstrip('0')
@@ -24,13 +25,14 @@ raw_numbers = [
     "067\\t123 4567",
     "(095) 234-5678\\n",
     "+380 44 123 4567",
-    "380501234567",
+    "+123456789012 ",
     "    +38(050)123-32-34",
     "     0503451234",
     "(050)8889900",
     "38050-111-22-22",
     "38050 111 22 11   ",
     "0601234567",
+    "+123456789",  
 ]
 
 sanitized_numbers = [normalize_phone(num) for num in raw_numbers]
