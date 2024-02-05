@@ -1,21 +1,15 @@
-# Task 2
 import random
 
 def get_numbers_ticket(min, max, quantity):
-    if not (isinstance(min, int) and isinstance(max, int) and isinstance(quantity, int)):
+    if not (1 <= min <= max <= 1000) or not (1 <= quantity <= max - min + 1):
+        print("Некоректні параметри. Повертаю пустий список.")
         return []
 
-    if not (0 <= min <= max):
-        return []
+    numbers_set = set()
+    while len(numbers_set) < quantity:
+        numbers_set.add(random.randint(min, max))
 
-    num_set = set()
-    while len(num_set) < quantity:
-        num_set.add(random.randint(min, max))
+    return sorted(list(numbers_set))
 
-    return sorted(list(num_set))
-
-try:
-    lottery_numbers = get_numbers_ticket(1, 60, 6)
-    print("Ваші лотерейні числа:", lottery_numbers)
-except ValueError:
-    print("Неправильні параметри для генерації лотерейних чисел.")
+lottery_numbers = get_numbers_ticket(10, 4, 5)
+print("Ваші лотерейні числа:", lottery_numbers)

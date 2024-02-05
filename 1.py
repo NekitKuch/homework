@@ -1,4 +1,3 @@
-# Task 1
 from datetime import datetime, timedelta
 
 def get_days_from_today(date_str): 

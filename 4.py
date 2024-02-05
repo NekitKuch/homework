@@ -1,4 +1,3 @@
-# Task 4
 from datetime import datetime, timedelta
 
 def get_upcoming_birthdays(users):
@@ -29,7 +28,7 @@ def get_upcoming_birthdays(users):
     return upcoming_birthdays
 
 users = [
-    {"name": "John Doe", "birthday": "2024.02.03"},
+    {"name": "John Doe", "birthday": "1985.02.07"},
     {"name": "Jane Smith", "birthday": "2024.02.06"}
 ]
 
