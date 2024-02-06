@@ -7,6 +7,9 @@ def normalize_phone(phone_number):
     # якщо є +, але немає 380, нічого не змінюємо
     if cleaned_number.startswith('+') and not cleaned_number.startswith('+380'):
         return cleaned_number
+    # коли немає ні +, ні 380
+    elif not cleaned_number.startswith('+') and not cleaned_number.startswith('0'):
+        cleaned_number = '+' + cleaned_number
 
     # додаємо +380, якщо його немає
     if not cleaned_number.startswith('+') and not cleaned_number.startswith('380'):
@@ -31,7 +34,7 @@ raw_numbers = [
     "(050)8889900",
     "38050-111-22-22",
     "38050 111 22 11   ",
-    "0601234567",
+    "432 11 222 22 22",
     "+123456789",  
 ]
 
